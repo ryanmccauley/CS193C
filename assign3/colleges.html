@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bay Area Colleges and Universities</title>
+    <link rel="stylesheet" href="colleges.css" />
+</head>
+<body>
+  <h1>Bay Area Colleges and Universities</h1>
+  <div class="grid">
+    <table id="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>SAT High</th>
+        <th>SAT Low</th>
+        <th>Tuition</th>
+      </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+    <form id="searchForm" class="search">
+      <div class="search-header">Search Criteria</div>
+      <div class="search-school-type">
+        <div>
+          <input name="schoolType" type="radio" value="public" id="publicSchool" />
+          <label for="publicSchool">Public</label>
+        </div>
+        <div>
+          <input name="schoolType" type="radio" value="private" id="privateSchool" />
+          <label for="privateSchool">Private</label>
+        </div>
+        <div>
+          <input name="schoolType" type="radio" value="" id="dontCare" />
+          <label for="dontCare">Don't care</label>
+        </div>
+      </div>
+      <div class="search-school-options">
+        <div class="search-school-option">
+          <div class="search-school-option-desc">
+            <p>Maximum Tuition</p>
+            <small>leave blank for don't care</small>
+          </div>
+          <input type="number" name="maxTuition" min="1" max="100000" />
+        </div>
+        <div class="search-school-option">
+          <div class="search-school-option-desc">
+            <p>Maximum High SAT</p>
+            <small>leave blank for don't care</small>
+          </div>
+          <input type="number" name="maxSat" min="400" max="1600" />
+        </div>
+        <div class="search-school-option">
+          <div class="search-school-option-desc">
+            <p>Minimum Low SAT</p>
+            <small>leave blank for don't care</small>
+          </div>
+          <input type="number" name="minSat" min="400" max="1600" />
+        </div>
+      </div>
+      <button type="submit" id="update">Update</button>
+    </form>
+  </div>
+  <script src="colleges.js"></script>
+</body>
+</html>

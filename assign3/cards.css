@@ -1,0 +1,13 @@
+body {
+    padding: 5% 10%;
+}
+
+#cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-bottom: 1em;
+}
+
+.card:hover {
+    cursor: pointer;
+}

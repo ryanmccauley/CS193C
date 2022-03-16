@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Getter</title>
+    <style>
+      form {
+        display: flex;
+        align-items: center;
+      }
+
+      form * {
+        height: max-content;
+        width: max-content;
+        margin-right: 4px;
+      }
+
+      textarea {
+        width: 20%;
+      }
+    </style>
+</head>
+<body>
+  <form id="form">
+    <h3>Enter ZIP code:</h3>
+    <input type="number" name="zipcode" />
+    <button type="submit">Get Weather</button>
+    <button type="button" id="clear">Clear</button>
+  </form>
+  <textarea id="results" rows="5"></textarea>
+  <script>
+    const form = document.getElementById('form');
+    const clear = document.getElementById('clear');
+    const results = document.getElementById('results');
+
+    clear.addEventListener('click', (e) => {
+      results.innerHTML = "";
+    });
+
+    form.onsubmit = (e) => {
+      e.preventDefault();
+
+      const { zipcode } = e.target;
+
+      makeRequest(zipcode.value);
+    }
+
+    const API_KEY = '5672235574756bd6e56c563b72ddb6d8';
+
+    function makeRequest(zipcode) {
+      if (zipcode) {
+        const url = 'https://api.openweathermap.org/data/2.5/weather?zip=' + zipcode + ',us&units=imperial&APPID=' + API_KEY;
+        fetch(url).then(res => res.json()).then(res => {
+          const { name, main } = res;
+          const { temp } = main;
+
+          results.innerHTML = `${!results.innerHTML ? "" : results.innerHTML + '\n'}${name}: ${temp}`;
+        })
+      }
+    }
+  </script>
+</body>
+</html>
